@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using NeedMilk.Models;
 
 namespace NeedMilk.Data.Migrations
 {
@@ -19,6 +20,24 @@ namespace NeedMilk.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("NeedMilk.Models.Product", b =>
+            {
+                b.Property<int>("ProductID")
+                    .ValueGeneratedOnAdd()
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                b.Property<string>("Category");
+
+                b.Property<string>("Description");
+
+                b.Property<string>("Name");
+
+                b.Property<decimal>("Price");
+
+                b.HasKey("ProductID");
+
+                b.ToTable("Products");
+            });
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
